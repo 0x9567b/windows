@@ -19,5 +19,11 @@ $locations = @(
 
 
 for ($i = 0; $i -lt $locations.Length; $i++) {
-    Get-ItemProperty -Path $locations[$i]
+    $check = Test-Path -Path $locations[$i]
+
+    if ($check -eq 'True') {
+        Get-ItemProperty -Path $locations[$i]
+    } else{
+        Write-host "Failed"
+    }
 }
